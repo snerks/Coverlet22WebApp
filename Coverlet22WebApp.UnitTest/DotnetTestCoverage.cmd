@@ -1,1 +1,1 @@
-dotnet test /p:CollectCoverage=true /p:CoverletOutput=TestResults/ /p:CoverletOutputFormat=cobertura
+dotnet test /p:CollectCoverage=true /p:CoverletOutput=TestResults/ /p:CoverletOutputFormat=cobertura  /p:Threshold=80 /p:ThresholdType=line /p:ThresholdStat=total
