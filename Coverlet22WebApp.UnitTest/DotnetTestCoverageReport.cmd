@@ -1,0 +1,2 @@
+DotnetTestCoverage.cmd
+ReportGenerator.cmd
