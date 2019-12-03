@@ -8,7 +8,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [macOS-latest, ubuntu-latest]
+        os: [windows-latest]
     steps:
     - uses: actions/checkout@v1
     - name: Setup .NET Core
@@ -19,4 +19,12 @@ jobs:
       run: dotnet build --configuration Release
     - name: Test with dotnet
       run: dotnet test /p:CollectCoverage=true /p:CoverletOutput=TestResults/ /p:CoverletOutputFormat=cobertura /p:Threshold=80 /p:ThresholdType=line /p:ThresholdStat=total
+    - name: Install Report Generator
+      run: dotnet tool install dotnet-reportgenerator-globaltool --tool-path tools
+    - name: Run Report Generator
+      run: .\Coverlet22WebApp.UnitTest\tools\reportgenerator.exe -reports:.\Coverlet22WebApp.UnitTest\TestResults\coverage.cobertura.xml -targetdir:.\Coverlet22WebApp.UnitTest\TestResults\
+    - uses: actions/upload-artifact@v1
+      with:
+        name: my-TestResults
+        path: .\Coverlet22WebApp.UnitTest\TestResults\
 
