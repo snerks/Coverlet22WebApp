@@ -15,12 +15,10 @@ jobs:
         dotnet-version: 2.2.108
     - name: Build with dotnet
       run: dotnet build --configuration Release
-    - name: Change to Unit Test folder
-      run: cd .\Coverlet22WebApp.UnitTest
     - name: Test with dotnet
       run: dotnet test /p:CollectCoverage=true /p:CoverletOutput=TestResults/ /p:CoverletOutputFormat=cobertura /p:Threshold=80 /p:ThresholdType=line /p:ThresholdStat=total
     - name: Install ReportGenerator
-      run: dotnet tool install dotnet-reportgenerator-globaltool --tool-path tools
+      run: dotnet tool install dotnet-reportgenerator-globaltool --tool-path .\Coverlet22WebApp.UnitTest\tools
     - name: Run ReportGenerator
-      run: .\tools\reportgenerator.exe -reports:.\TestResults\coverage.cobertura.xml -targetdir:.\TestResults\
+      run: .\Coverlet22WebApp.UnitTest\tools\reportgenerator.exe -reports:.\Coverlet22WebApp.UnitTest\TestResults\coverage.cobertura.xml -targetdir:.\Coverlet22WebApp.UnitTest\TestResults\
 
