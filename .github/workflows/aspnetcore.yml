@@ -15,6 +15,8 @@ jobs:
         dotnet-version: 2.2.108
     - name: Build with dotnet
       run: dotnet build --configuration Release
+    - name: Change to Unit Test folder
+      run: cd .\Coverlet22WebApp.UnitTest
     - name: Test with dotnet
       run: dotnet test /p:CollectCoverage=true /p:CoverletOutput=TestResults/ /p:CoverletOutputFormat=cobertura /p:Threshold=80 /p:ThresholdType=line /p:ThresholdStat=total
     - name: Install ReportGenerator
