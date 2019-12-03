@@ -18,7 +18,7 @@ namespace Coverlet22WebApp.UnitTest.Controllers
             var actual = sut.Get();
 
             // Assert
-            Assert.NotNull(actual);
+            Assert.Null(actual);
         }
     }
 }
