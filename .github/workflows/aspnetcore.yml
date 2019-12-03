@@ -20,11 +20,11 @@ jobs:
     - name: Test with dotnet
       run: dotnet test /p:CollectCoverage=true /p:CoverletOutput=TestResults/ /p:CoverletOutputFormat=cobertura /p:Threshold=80 /p:ThresholdType=line /p:ThresholdStat=total
     - name: Install Report Generator
-      run: dotnet tool install dotnet-reportgenerator-globaltool --tool-path /home/runner/work/Coverlet22WebApp/Coverlet22WebApp/Coverlet22WebApp.UnitTest/tools
+      run: dotnet tool install dotnet-reportgenerator-globaltool --tool-path Coverlet22WebApp.UnitTest/tools
     - name: Run Report Generator
-      run: /home/runner/work/Coverlet22WebApp/Coverlet22WebApp/Coverlet22WebApp.UnitTest/tools/reportgenerator -reports:/home/runner/work/Coverlet22WebApp/Coverlet22WebApp/Coverlet22WebApp.UnitTest/TestResults/coverage.cobertura.xml -targetdir:/home/runner/work/Coverlet22WebApp/Coverlet22WebApp/Coverlet22WebApp.UnitTest/TestResults/
+      run: Coverlet22WebApp.UnitTest/tools/reportgenerator -reports:Coverlet22WebApp.UnitTest/TestResults/coverage.cobertura.xml -targetdir:Coverlet22WebApp.UnitTest/TestResults/
     - uses: actions/upload-artifact@v1
       with:
         name: Coverage Results
-        path: /home/runner/work/Coverlet22WebApp/Coverlet22WebApp/Coverlet22WebApp.UnitTest/TestResults/
+        path: Coverlet22WebApp.UnitTest/TestResults/
 
