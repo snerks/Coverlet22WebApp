@@ -25,6 +25,6 @@ jobs:
       run: .\Coverlet22WebApp.UnitTest\tools\reportgenerator.exe -reports:.\Coverlet22WebApp.UnitTest\TestResults\coverage.cobertura.xml -targetdir:.\Coverlet22WebApp.UnitTest\TestResults\
     - uses: actions/upload-artifact@v1
       with:
-        name: my-TestResults
+        name: Coverage Results
         path: .\Coverlet22WebApp.UnitTest\TestResults\
 
